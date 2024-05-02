@@ -61,7 +61,7 @@ router.get('/profile', isLoggedIn, async function(req, res) {
         username: req.session.passport.user
     }).populate("posts")
     
-    res.send("user's detail",user)
+    res.send(user)
 })
 router.get('/feeds', async function(req, res) {
     
