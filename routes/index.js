@@ -13,7 +13,7 @@ passport.use(new localStrategy(userModel.authenticate()));
 
 router.get('/', function(req, res, next) {
 
-    res.render('login', { error: req.flash("error") });
+    res.send("login_page");
 });
 router.get('/register', function(req, res, next) {
     res.render('register');
@@ -61,7 +61,7 @@ router.get('/profile', isLoggedIn, async function(req, res) {
         username: req.session.passport.user
     }).populate("posts")
     
-    res.render('profile', { user })
+    res.send("user's detail",user)
 })
 router.get('/feeds', async function(req, res) {
     
@@ -123,7 +123,7 @@ router.post("/login", function(req, res, next) {
 router.get('/logout', function(req, res, next) {
     req.logout(function(err) {
         if (err) { return next(err); }
-        res.redirect('/');
+        res.send("loged out");
     })
 });
 
