@@ -26,7 +26,7 @@ router.post('/fileupload', isLoggedIn, uploadDp.single('file'), async function(r
     const user = await userModel.findOne({ username: req.session.passport.user });
     user.profileImage = req.file.filename;
     await user.save();
-    res.redirect('/profile')
+    res.send(user)
 
 
 });
@@ -87,7 +87,7 @@ router.post('/register',async function(req, res) {
             passport.authenticate("local")(req, res, function() {
                 console.log('User registered successfully.');
                
-                res.redirect('/profile')
+                res.send(userdata)
             })
         })
         
@@ -113,7 +113,7 @@ router.post("/login", function(req, res, next) {
             if (err) {
                 return res.status(500).json({ message: "An error occurred" });
             }
-             res.redirect('/profile')
+             res.send(user)
         });
         
 
