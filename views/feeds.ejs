@@ -1,0 +1,18 @@
+<% include ./partials/nav.ejs %>
+    <div class="cards capitalize flex flex-wrap gap-10 px-11 py-6 ">
+        <% feed.forEach((post)=>{ %>
+            <div>
+                <div class=" w-[200px] rounded-lg ">
+                    <img src=" ./images/upload/<%= post.posts %>" alt="">
+                </div>
+                <h4>
+                    <a href="">
+                        <%= post.postText %>
+                    </a>
+                </h4>
+                <h1>
+                    <%= post.user.username %>
+                </h1>
+            </div>
+            <% }) %>
+            <% include ./partials/footer.ejs %>

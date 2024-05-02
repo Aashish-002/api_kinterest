@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+    html {
+        font-family: 'Inter';
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(228, 235, 236);
+    display: flex;
+    font-family: 'Assistant', sans-serif;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.edit {
+    margin-left: 120px;
+    margin-top: -30px;
+}
+
+
+/* .container {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background-color: rgba(55, 44, 44, 0.237);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.399);
+    border-radius: 10px;
+    gap: 45px;
+} */
+
+.container a {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 8vw;
+    height: 4vh;
+    top: 10%;
+    background-color: rgb(19, 19, 19);
+    text-decoration: none;
+    color: aliceblue;
+    overflow: hidden;
+    border: none;
+    font-family: 'Assistant', sans-serif;
+}
+
+.container a span {
+    display: block;
+    position: absolute;
+}
+
+.container a span:nth-child(1) {
+    width: 100%;
+    height: 2px;
+    left: -100%;
+    top: 0;
+    background: linear-gradient(90deg, transparent, #75dfe6);
+    animation: btn-ani1 1s linear infinite;
+}
+
+@keyframes btn-ani1 {
+    0% {
+        left: -100%;
+    }
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+.container a span:nth-child(2) {
+    width: 2px;
+    height: 100%;
+    top: -100%;
+    right: 0;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: btn-ani2 1s linear infinite;
+    animation-delay: .25s
+}
+
+@keyframes btn-ani2 {
+    0% {
+        top: -100%;
+    }
+    50%,
+    100% {
+        top: 100%;
+    }
+}
+
+.container a span:nth-child(3) {
+    width: 100%;
+    height: 2px;
+    right: -100%;
+    bottom: 0;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: btn-ani3 1s linear infinite;
+    animation-delay: 0.5s;
+}
+
+@keyframes btn-ani3 {
+    0% {
+        right: -100%;
+    }
+    50%,
+    100% {
+        right: 100%;
+    }
+}
+
+.container a span:nth-child(4) {
+    width: 2px;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+    background: linear-gradient(360deg, transparent, #03e9f4);
+    animation: btn-ani4 1s linear infinite;
+    animation-delay: .75s
+}
+
+@keyframes btn-ani4 {
+    0% {
+        bottom: -100%;
+    }
+    50%,
+    100% {
+        bottom: 100%;
+    }
+}
+
+.container a:hover {
+    background-color: #03e9f4;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 20px #03e9f4, 0 0 200px #03e9f4;
+    transition: all ease .6s;
+    color: black;
+}
+
+.upload {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 110vh;
+    overflow: hidden;
+    /* background-color: rgba(60, 15, 15, 0.836); */
+    top: -100px;
+    animation: out 0.2s ease-in alternate;
+}
+
+#profileImg {
+    /* background-color: red; */
+    background-image: url('/images/proImage.png');
+    border-radius: 100%;
+    /* background-size: 100px 100px; */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes out {
+    10% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes in {
+    10% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.5);
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "tailwindCSS.experimental.configFile": null,
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.experimental.templateLanguages": ["ejs"],
+"tailwindCSS.includeLanguages": {
+    "ejs": "html"
+},
+
+"editor.inlineSuggest.enabled": true,
+"editor.quickSuggestions": {
+   "strings": true
+},
+"json.schemas": [
+
+],
+"files.autoSave": "onFocusChange",
+
+}

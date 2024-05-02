@@ -1,0 +1,70 @@
+<% include ./partials/header.ejs %>
+
+    <div class="w-full h-screen bg-zinc-600 flex items-center justify-center ">
+        <div class="w-96  bg-white rounded-[30px] ">
+            <div class="my-6">
+                <div class=" w-[100%] h-[10%] px-28 ">
+                    <img class=" w-[80%] " src="/images/K-removebg-preview.png" alt=""></div> <br>
+                <h1 class="justify-center  flex capitalize text-4xl mb-4 ">Welocme to kintrest</h1>
+
+
+                <form class="" action="/login" method="post">
+                    <div class=" px-16 ">
+                        <label class="px-2 text-sm">Username</label><br>
+                        <input name="username" type="text" class=" border-zinc-300 border-2 rounded-2xl p-3   w-60 h-11 hover:border-zinc-400 " placeholder="username">
+
+                    </div>
+
+                    <div class=" px-16">
+                        <label class="px-2 text-sm">Password</label><br>
+                        <input type="password" id="passwordInput" name="password" class=" border-zinc-300 border-2 rounded-2xl   p-3   w-60 h-11  hover:border-zinc-400 flex " placeholder="Enter your password">
+                        <span id="toggleButton" class=" absolute top-[48.3%] left-[52%] cursor-pointer "><img class="mx-10 w-[15px]" src="./images/eyelash.png" alt=""></span> </div>
+                    <div>
+                        <% if(error.length >0) {%>
+                            <p class="flex justify-center text-sm font-bold text-red-500 ">
+                                <%=error%>
+                            </p>
+                            <% }%>
+                    </div>
+                    <div class="px-16 font-semibold">
+                        <a href="">Forgotten your password?</a>
+                    </div>
+
+
+                    <div class="px-16 py-3 ">
+                        <button type="submit" class="btn  w-60 h-10   rounded-full bg-red-600 text-white hover:bg-red-700 ">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span class="font-bold">Log</span>&nbspin 
+                </button></div><br>
+                    <div class="px-16 ">
+                        <p class="text-xs flex  ">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBy continuing, you agree to Pinterest's<br> Terms of Service and acknowledge that you've read<br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspour
+                            Privacy Policy.Notice at collection.
+
+                        </p>
+                    </div>
+                    <div class="px-[24%] flex">
+                        <p>Not on Pinterest yet?</p><a class="font-bold" href="/register">
+                    Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const passwordInput = document.getElementById("passwordInput");
+        const toggleButton = document.getElementById("toggleButton");
+
+        toggleButton.addEventListener("click", function() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.innerHTML = '<img class="w-[15px] mx-10" src="./images/eye.png" alt="">';
+            } else {
+                passwordInput.type = "password";
+                toggleButton.innerHTML = '<img class="w-[15px] mx-10" src="./images/eyelash.png" alt="">';
+            }
+        });
+    </script>
+    <% include ./partials/footer.ejs %>

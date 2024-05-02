@@ -1,0 +1,108 @@
+<% include ./partials/nav.ejs %>
+    <main class=" flex">
+        <div class="w-full  ">
+
+
+            <div class=" ml-[45%] mt-[5%]  flex">
+
+                <ul>
+                    <form id="uploadicon" hidden action="/fileupload" method="post" enctype="multipart/form-data">
+
+                        <input type="file" name="file">
+
+                    </form>
+                    <li class=" "><img id="profileImg" class="  w-48 h-48  " src="./images/upload/profile/<%= user.profileImage %> " alt=" ">
+                        <div class="edit w-9 absolute bg-slate-100 rounded-full cursor-pointer ">
+                            <img class=" p-2 active:p-3 " src="./images/edit.png " alt=" "></div><br>
+                    </li>
+                    <li class="flex justify-center ">
+                        <h3>
+                            <%= user.fullname %>
+                        </h3>
+                    </li>
+                    <li class="flex justify-center ">
+                        <h3>@
+                            <%= user.username %>
+                        </h3>
+                    </li>
+                    <li class="flex justify-center hover:font-extrabold "><a href=" ">view profile</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="cards capitalize flex flex-wrap gap-10 px-11 py-6 ">
+                <% user.posts.forEach((post)=>{ %>
+                    <div>
+                        <div class=" max-w-[200px] rounded-lg ">
+                            <img src=" ./images/upload/<%= post.posts %>" alt="">
+                        </div>
+                        <h4>
+                            <a href="">
+                                <%= post.postText %>
+                            </a>
+                        </h4>
+
+                    </div>
+                    <% }) %>
+
+
+
+
+                        <div class=" w-32 h-40 flex flex-col justify-center items-center ">
+                            <img id="uploadButton" class=" uploadButton w-16 h-16 cursor-pointer" src="./images/plus.png" alt="">
+                        </div>
+            </div>
+
+
+
+        </div>
+        <div id="upload" class="upload">
+            <div class="capitalize   ">
+                <div class="absolute left-[38%] top-[25%] w-[100%] h-[60vh] ">
+                    <div class="  w-[27%] h-[60vh] bg-slate-50 rounded-lg">
+                        <h1 class="text-lg flex justify-center font-bold text-red-700 py-2 -mb-4">create post <span id="cut" class="inline-block cursor-pointer translate-x-48 ">&#120684;</span></h1>
+                        <hr class="opacity-10 mt-3">
+                        <form class="" action="/upload" method="post" enctype="multipart/form-data">
+                            <input class="block w-[85%] mx-9 px-5 py-2 border-2 mt-2 rounded-md" type="file" name="file"> <br>
+                            <input class="text-black w-[85%] mx-9  block  px-3 py-2 border-2 mt-2 rounded-md" type="text" name="filecaption" placeholder="enter caption"> <br>
+                            <textarea class="text-black block w-[85%] mx-9 h-60 px-3 py-2 border-2 mt-2 rounded-md" type="text" placeholder="Describe post here..." name="discription"></textarea> <br>
+                            <button class=" test block w-[85%] mx-9 px-3 py-2 border-2  rounded-md bg-red-700 active:bg-red-800" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js" integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script>
+        document.querySelector('.edit').addEventListener("click", () => {
+            document.querySelector('#uploadicon input').click();
+        })
+        document.querySelector("#uploadicon input").addEventListener("change", () => {
+            document.querySelector("#uploadicon").submit();
+        })
+
+
+        const toggleButton = document.getElementById('uploadButton');
+        const elementToToggle = document.getElementById('upload');
+        const hide = document.getElementById('cut')
+        let isVisible = false; // Track element visibility state
+
+        toggleButton.addEventListener('click', () => {
+            isVisible = !isVisible; // Toggle visibility state
+            elementToToggle.style.display = isVisible ? 'block' : 'none';
+        });
+
+        hide.addEventListener('click', (event) => {
+            // Ignore clicks on the toggle button itself
+            if (event.target !== toggleButton && isVisible) {
+                elementToToggle.style.display = 'none';
+                isVisible = false; // Update visibility state
+            }
+        });
+    </script>
+
+    <% include ./partials/footer.ejs %>
